@@ -1,9 +1,9 @@
 <header class="max-w-xl mx-auto mt-20 text-center">
     <h1 class="text-4xl">
-        Curso <span class="text-blue-500">Laravel From Scratch</span> com Jeffrey Way
+        Curso <span class="text-blue-500">Laravel From Scratch</span><br/> com Jeffrey Way
     </h1>
 
-    <h2 class="inline-flex mt-2 font-bold">By Pablo Santos  <img src="/images/pablo.png"></h2>
+    <img class="inline-flex rounded-full mr-4" src="/images/pablo.png"><h2 class="inline-flex mt-6 font-bold">By Pablo Santos</h2>
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
         <!--  Category -->
