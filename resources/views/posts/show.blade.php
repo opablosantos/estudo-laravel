@@ -50,6 +50,15 @@
                 </div>
 
                 <section class="col-span-8 col-start-5 space-y-6">
+                    <form method="POST" action="#" class="border border-gray-200 p-6 rounded-xl">
+                        @csrf
+
+                        <header>
+                            <h2>Want to participate?</h2>
+                        </header>
+
+                    </form>
+
                     @foreach ($post->comments as $comment)
                         <x-post-comment :comment="$comment"/>
                     @endforeach
