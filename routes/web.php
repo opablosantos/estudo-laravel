@@ -4,25 +4,19 @@ use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Services\Newsletter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 
-Route::post('newsletter', function() {
+Route::post('newsletter', function(Newsletter $newsletter) {
     request()->validate(['email' => 'required|email']);
 
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us6'
-    ]);
-
-    //edb6b2f372
     try {
-            "email_address" => request('email'),
-            "status" => "subscribed",
-        ]);
-    } catch (\Exception $e) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
+        $newsletter = new Newsletter();
+
+        $newsletter->subscribe(request('email'));
+    } catch (Exception $e) {
+        throw ValidationException::withMessages([
             'email' => 'This email could not be added to our newsletter list.'
         ]);
     }
